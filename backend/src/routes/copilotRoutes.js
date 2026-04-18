@@ -9,6 +9,13 @@ import {
 const upload = multer({ storage: multer.memoryStorage() });
 const router = express.Router();
 
+router.get("/transcribe", (_req, res) => {
+  res.status(405).json({
+    error: "Method not allowed",
+    details: "Use POST /api/transcribe with multipart/form-data",
+  });
+});
+
 router.post("/transcribe", upload.single("audio"), async (req, res) => {
   try {
     const apiKey = req.header("x-groq-api-key") || process.env.GROQ_API_KEY;
@@ -49,6 +56,13 @@ router.post("/suggestions", async (req, res) => {
   }
 });
 
+router.get("/suggestions", (_req, res) => {
+  res.status(405).json({
+    error: "Method not allowed",
+    details: "Use POST /api/suggestions with application/json",
+  });
+});
+
 router.post("/chat", async (req, res) => {
   try {
     const apiKey = req.header("x-groq-api-key") || process.env.GROQ_API_KEY;
@@ -72,6 +86,13 @@ router.post("/chat", async (req, res) => {
       details: error.message,
     });
   }
+});
+
+router.get("/chat", (_req, res) => {
+  res.status(405).json({
+    error: "Method not allowed",
+    details: "Use POST /api/chat with application/json",
+  });
 });
 
 export default router;
