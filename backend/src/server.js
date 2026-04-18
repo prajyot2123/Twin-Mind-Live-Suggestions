@@ -31,6 +31,7 @@ app.get("/health", (_req, res) => {
   });
 });
 
+app.use(copilotRoutes);
 app.use("/api", copilotRoutes);
 
 app.listen(PORT, () => {
