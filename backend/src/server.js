@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 8080;
 
 app.use(cors({
   origin: "*",
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"]
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "x-groq-api-key"]
 }));
 
 app.use(express.json({ limit: "2mb" }));
