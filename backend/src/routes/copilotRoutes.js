@@ -16,7 +16,7 @@ router.get("/transcribe", (_req, res) => {
   });
 });
 
-router.post("/transcribe", upload.single("audio"), async (req, res) => {
+router.post("api/transcribe", upload.single("audio"), async (req, res) => {
   try {
     const apiKey = req.header("x-groq-api-key") || process.env.GROQ_API_KEY;
     const result = await generateTranscriptText({
@@ -33,7 +33,7 @@ router.post("/transcribe", upload.single("audio"), async (req, res) => {
   }
 });
 
-router.post("/suggestions", async (req, res) => {
+router.post("api/suggestions", async (req, res) => {
   try {
     const apiKey = req.header("x-groq-api-key") || process.env.GROQ_API_KEY;
     const transcript = Array.isArray(req.body?.transcript)
@@ -63,7 +63,7 @@ router.get("/suggestions", (_req, res) => {
   });
 });
 
-router.post("/chat", async (req, res) => {
+router.post("api/chat", async (req, res) => {
   try {
     const apiKey = req.header("x-groq-api-key") || process.env.GROQ_API_KEY;
     const transcript = Array.isArray(req.body?.transcript)
