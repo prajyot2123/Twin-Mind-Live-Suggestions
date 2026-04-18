@@ -12,11 +12,11 @@ const router = express.Router();
 router.get("/transcribe", (_req, res) => {
   res.status(405).json({
     error: "Method not allowed",
-    details: "Use POST /api/transcribe with multipart/form-data",
+    details: "Use POST /transcribe or /api/transcribe with multipart/form-data",
   });
 });
 
-router.post("api/transcribe", upload.single("audio"), async (req, res) => {
+router.post("/transcribe", upload.single("audio"), async (req, res) => {
   try {
     const apiKey = req.header("x-groq-api-key") || process.env.GROQ_API_KEY;
     const result = await generateTranscriptText({
@@ -33,7 +33,7 @@ router.post("api/transcribe", upload.single("audio"), async (req, res) => {
   }
 });
 
-router.post("api/suggestions", async (req, res) => {
+router.post("/suggestions", async (req, res) => {
   try {
     const apiKey = req.header("x-groq-api-key") || process.env.GROQ_API_KEY;
     const transcript = Array.isArray(req.body?.transcript)
@@ -59,11 +59,11 @@ router.post("api/suggestions", async (req, res) => {
 router.get("/suggestions", (_req, res) => {
   res.status(405).json({
     error: "Method not allowed",
-    details: "Use POST /api/suggestions with application/json",
+    details: "Use POST /suggestions or /api/suggestions with application/json",
   });
 });
 
-router.post("api/chat", async (req, res) => {
+router.post("/chat", async (req, res) => {
   try {
     const apiKey = req.header("x-groq-api-key") || process.env.GROQ_API_KEY;
     const transcript = Array.isArray(req.body?.transcript)
@@ -91,7 +91,7 @@ router.post("api/chat", async (req, res) => {
 router.get("/chat", (_req, res) => {
   res.status(405).json({
     error: "Method not allowed",
-    details: "Use POST /api/chat with application/json",
+    details: "Use POST /chat or /api/chat with application/json",
   });
 });
 
