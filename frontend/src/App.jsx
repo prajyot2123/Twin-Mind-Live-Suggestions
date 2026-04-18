@@ -221,11 +221,6 @@ export default function App() {
     <div className="h-screen bg-[#060b14] p-2 sm:p-3">
       <div className="mx-auto flex h-full max-w-[1800px] flex-col rounded-xl border border-[#273247] bg-[#0a1221] p-2 shadow-[0_12px_40px_rgba(0,0,0,0.4)]">
         <header className="rounded-md border border-[#273247] bg-gradient-to-b from-[#121a2a] to-[#0d1423] px-4 py-2.5">
-          {showApiWarning ? (
-            <div className="mb-2 rounded-md border border-amber-400/50 bg-amber-100/10 px-3 py-2 text-xs text-amber-100">
-              GROQ_API_KEY is missing. Add it in Settings to enable live Groq responses.
-            </div>
-          ) : null}
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h1 className="text-base font-semibold tracking-wide text-[#edf3ff]">TwinMind - Live Suggestions Web App (Reference Mockup)</h1>
