@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #060b14;
+  color: #c2d0e8;
+}
+
+.panel-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #2a3957 #0d1628;
+}
+
+.panel-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.panel-scroll::-webkit-scrollbar-track {
+  background: #0d1628;
+}
+
+.panel-scroll::-webkit-scrollbar-thumb {
+  background: #2a3957;
+  border-radius: 999px;
+}
