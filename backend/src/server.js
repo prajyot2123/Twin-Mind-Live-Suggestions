@@ -15,6 +15,11 @@ app.use(cors({
 
 app.use(express.json({ limit: "2mb" }));
 
+app.get("/api/test", (_req, res) => {
+  res.json({ message: "API routes working", routes: ["/api/chat", "/api/suggestions", "/api/transcribe"] });
+});
+
+
 app.get("/", (req, res) => {
   res.send("Backend is running");
 });
